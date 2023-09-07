@@ -55,25 +55,25 @@ class Patient(currentstatus.Status, clinicalhistory.ClinicalHistory):
         birthdate = birthdate.split(" ")
         blood_type = input("Enter the blood type: ")
 
+        while not ((blood_type == "A+") or (blood_type == "A-") or (blood_type == "B+") or (blood_type == "B-") or (blood_type == "AB+") or (blood_type == "AB-") or (blood_type == "O+") or (blood_type == "O-")):
+            print("Invalid blood type")
+            blood_type = input("Enter the blood type: ")
+
         chronicd = int(
             input("The patient suffers from chronic diseases: (Y = 1 / N = 2) "))
         if chronicd != 1:
             chronicd = None
-
-        while not (blood_type == "A+") or (blood_type == "A-") or (blood_type == "B+") or (blood_type == "B-") or (blood_type == "AB+") or (blood_type == "AB-") or (blood_type == "O+") or (blood_type == "O-"):
-            print("Invalid blood type")
-            blood_type = input("Enter the blood type: ")
-
-        status = currentstatus.Status.newstatus()
-        clinicalhistory = clinicalhistory.ClinicalHistory.newclinicalhistory()
+        
+        status_ = currentstatus.Status.newstatus()
+        clinicalhistory_ = clinicalhistory.ClinicalHistory.newclinicalhistory()
 
         Newpatient = Patient(document, name, sex, birthdate,
-                             blood_type, chronicd, status, clinicalhistory)
+                             blood_type, chronicd, status_, clinicalhistory_)
         print("Patient added succesfully")
         patient_list.append(Newpatient)
 
         patient_list.sort(
-            key=lambda x: x.Patient.Clinicalhistory.arrival, reverse=False)
+            key=lambda x: x.Clinicalhistory.arrived, reverse=False)
 
     @staticmethod
     def patientmenu(found_patient):
@@ -171,7 +171,7 @@ class Patient(currentstatus.Status, clinicalhistory.ClinicalHistory):
         print("Opening new clinical history with today's date ", today)
 
         found_patient.Status = currentstatus.Status.newstatus()
-        found_patient.Clinicalhistory = clinicalhistory.ClinicalHistory.newclinicalhistory(
+        found_patient.Clinicalhistory = clinicalhistory.ClinicalHistory.mutclinicalhistory(
             today)
 
         print("\n---Clinical history edited succesfully---\n")

@@ -84,7 +84,7 @@ class Hospital(patient.Patient):
         NewHospital = Hospital("Hospital001", 500, 300,
                                700, medsinstock, patient_list)
 
-        print("\n--- LIST OF HOSPITAL PATIENTS ---\n")
+        print("\n--- HISTORY OF HOSPITAL PATIENTS BY ARRIVAL ---\n")
 
         x = 1
         print("Patients in total: ", len(patient_list))

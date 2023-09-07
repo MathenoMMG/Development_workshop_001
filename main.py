@@ -1,5 +1,5 @@
 from patient import Patient
-from hospital import Hospital
+from hospital import Hospital 
 
 from datetime import date
 x = date.today()

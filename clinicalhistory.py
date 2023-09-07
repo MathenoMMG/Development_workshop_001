@@ -86,7 +86,7 @@ class ClinicalHistory ():
         return recentclinicalhistory
 
     @staticmethod
-    def newclinicalhistory(arrived):
+    def mutclinicalhistory(arrived):
         print("\n--- NEW CLINICAL HISTORY ---\n")
 
         reason = input("Enter the reason of the visit: ")
